@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Margarida Marcon|Costureira</title>
+    <!-- Google Fonts: Tipografia elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFAF5;  /* bege suave */
+            color: #2C3E2D;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navegação */
+        header {
+            background-color: #FFFFFFEE;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #E9DFD0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo a {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #5A7D5C;
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4A5B4A;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #BC9A6C;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            color: #5A7D5C;
+            cursor: pointer;
+        }
+
+        /* Botão flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            z-index: 99;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            background-color: #20b859;
+            transform: scale(1.05);
+        }
+
+        /* seções gerais */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #F0E8DD;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #4C6A4D;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: #D4C2AD;
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* HOME */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-content h1 {
+            font-size: 2.9rem;
+            color: #446544;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #4a5b49;
+            margin: 1.5rem 0;
+        }
+        .hero-img {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-img img {
+            max-width: 100%;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+
+        /* cards serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .service-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            transition: all 0.25s;
+            text-align: center;
+            border: 1px solid #F2E9DF;
+        }
+        .service-card i {
+            font-size: 2.5rem;
+            color: #A7C0A1;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #5C7C5A;
+        }
+        .service-card p {
+            color: #6B6E5E;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: #DCCFBF;
+            box-shadow: 0 18px 30px -10px rgba(0,0,0,0.08);
+        }
+
+        /* Formulário e contato lado a lado */
+        .booking-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+        }
+        .form-box, .contact-info {
+            flex: 1;
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+            border: 1px solid #EDE3D7;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 6px;
+            color: #4F6A4B;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 24px;
+            border: 1px solid #DDD2C4;
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFCF9;
+            transition: 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #BC9A6C;
+            box-shadow: 0 0 0 3px rgba(188,154,108,0.1);
+        }
+        .btn-submit {
+            background-color: #7B9C73;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-submit:hover {
+            background-color: #618a58;
+        }
+        .contact-info h3, .form-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #5C7C5A;
+        }
+        .contact-details {
+            margin: 1.8rem 0;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: #F2EBE1;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #7B9C73;
+            font-size: 1.2rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            background: #EFE6DC;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #527a4e;
+            font-size: 1.2rem;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            background: #DCC9B4;
+            color: #3a5837;
+        }
+
+        /* Sobre nós */
+        .about-content {
+           /* display: flex;*/
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        .about-text {
+            flex: 1.5;
+        }
+        .about-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+        .about-img {
+            flex: 1;
+            text-align: center;
+        }
+        .about-img img {
+            max-width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.08);
+        }
+
+        footer {
+            background: #EADFCF;
+            text-align: center;
+            padding: 28px 0;
+            color: #4C6141;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 830px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: #FFFBF5;
+                width: 80%;
+                height: calc(100% - 80px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+                transition: left 0.3s;
+                box-shadow: 4px 0 15px rgba(0,0,0,0.05);
+                z-index: 98;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .section-title {
+                font-size: 1.9rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .navbar {
+                padding: 15px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 50px 0;
+            }
+            .form-box, .contact-info {
+                padding: 1.5rem;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo"><a href="#"> Margarida Marcon</a></div>
+            <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#agendamento">Agendamento</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Home -->
+    <section id="home">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Costura com carinho <br> em cada detalhe</h1>
+                    <p>Resgatamos o valor artesanal da costura. Cada peça recebe atenção dedicada, qualidade impecável e um toque de criatividade. Seu look favorito merece uma nova história.</p>
+                    <p style="font-style: italic; border-left: 3px solid #BC9A6C; padding-left: 16px;">✨ Mais de 4 anos zelando pelo seu estilo com profissionalismo e carinho.</p>
+                </div>
+                <div class="hero-img">
+                    <img src="./home.jpg" alt="Máquina de costura e tecidos artesanais" onerror="this.src='https://placehold.co/600x450/E9DFD0/6F8F6A?text=❤️+Criação+em+Tecido'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-cut"></i>
+                    <h3>Ajustes</h3>
+                    <p>Barra, cintura, bainhas e modelagem. Deixamos sua roupa sob medida para o seu corpo.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Reformas</h3>
+                    <p>Reformas em roupas para ajustar, consertar e deixar tudo do jeitinho que você precisa.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-magic"></i>
+                    <h3>Consertos em Geral</h3>
+                    <p>Zíperes, botões, rasgos, troca de elásticos. Reparos precisos e discretos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendamento + Contato (unificada em layout para exibir formulário e informações lado a lado) -->
+    <section id="agendamento">
+        <div class="container">
+            <h2 class="section-title">Agende seu serviço</h2>
+            <div class="booking-contact">
+                <!-- Formulário de agendamento com integração WhatsApp -->
+                <div class="form-box">
+                    <h3><i class="fas fa-calendar-alt"></i>  Solicitar orçamento</h3>
+                    <p style="margin-bottom: 1.4rem;">Preencha os dados e enviaremos as informações diretamente ao nosso WhatsApp.</p>
+                    <form id="scheduleForm">
+                        <div class="form-group">
+                            <label for="nome">Nome completo *</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone / WhatsApp *</label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Tipo de serviço *</label>
+                            <select id="servico" required>
+                                <option value="">Selecione</option>
+                                <option value="Ajustes de roupas">Ajustes de roupas (barra, cintura, etc.)</option>
+                                <option value="Reformas">Reformas e recuperação</option>
+                                <option value="Customizações">Customizações criativas</option>
+                                <option value="Consertos em geral">Consertos em geral (zíper, botão, rasgos)</option>
+                                <option value="Outro">Outro serviço</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Breve descrição da peça / necessidade *</label>
+                            <textarea id="descricao" name="descricao" rows="3" required placeholder="Ex: Vestido com zíper quebrado, calça jeans para barra, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Enviar via WhatsApp</button>
+                    </form>
+                </div>
+
+                <!-- Contato (info) -->
+                <div class="contact-info" id="contato">
+                    <h3><i class="fas fa-address-card"></i> Fale conosco</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span><strong>WhatsApp:</strong> (41) 98791-7660</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span><strong>Telefone:</strong> (41) 98791-7660</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span><strong>E-mail:</strong>Margamarcon.Costura@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rua Vereador Augustinho Cunico, 59 – Casa, Campo Largo – PR</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/margaridafiormarcon?igsh=YjB2YzR2dzJ5cXpl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p style="margin-top: 1.8rem; font-size: 0.85rem;">💬 Atendimento de segunda a sexta, 9h às 18h. Sabados 9h às 12h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós (opcional) -->
+    <section id="sobre">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Sou <strong>Margarida Marcon</strong> trabalho com dedicação e carinho em cada peça. Meu objetivo é ajudar você a ajustar, reformar e dar uma nova vida às suas roupas, sempre com atenção aos detalhes. Atendo de forma próxima e personalizada, buscando oferecer um serviço de qualidade e confiança para cada cliente.</p>
+                    <p>💛 <strong>Nossos valores:</strong> Criatividade, transparência no orçamento e excelência técnica. Cada peça entregue é uma prova do nosso carinho pela costura e pela pessoa que vai vesti-la.</p>
+                </div>
+                <div class="about-img">
+                  <!--  <img src="./eacf70f8-d454-45a5-8f1a-a5953dd745ab.jpg" alt="Ateliê acolhedor com linhas e tecidos" onerror="this.src='https://placehold.co/500x400/E3D5C4/8BAA7A?text=Criatividade+e+Profissionalismo'"-->
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 Margarida Marcon – Todos os direitos reservados. <br> Site desenvolvido por Kamila Marcon</p>
+    </div>
+</footer>
+
+<!-- Botão fixo WhatsApp -->
+<a href="https://wa.me/5541987917660?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20de%20costura." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if(menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        // Fechar ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // Função principal: integração do formulário com WhatsApp
+    const form = document.getElementById('scheduleForm');
+    
+    // Número da empresa (mesmo do botão fixo, pode atualizar)
+    const empresaNumero = '41987917660';  // insira o número com código do país + DDD sem espaço, formato internacional
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Obter valores
+        const nome = document.getElementById('nome').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+        const servico = document.getElementById('servico').value;
+        const descricao = document.getElementById('descricao').value.trim();
+
+        // Validações simples
+        if (!nome || !telefone || !servico || !descricao) {
+            alert("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        if (telefone.length < 10) {
+            alert("Informe um número de telefone válido com DDD.");
+            return;
+        }
+
+        // Montar mensagem personalizada
+        let mensagem = `*🧵 NOVO AGENDAMENTO - Magarida Costura`;
+        mensagem += `*Cliente:* ${encodeURIComponent(nome)}%0A`;
+        mensagem += `*Telefone:* ${encodeURIComponent(telefone)}%0A`;
+        mensagem += `*Serviço desejado:* ${encodeURIComponent(servico)}%0A`;
+        mensagem += `*Descrição:* ${encodeURIComponent(descricao)}%0A%0A`;
+        mensagem += `🔖 *Origem:* Site de agendamento. Responder via WhatsApp.`;
+
+        // Gerar link do WhatsApp
+        const urlWhatsApp = `https://wa.me/${empresaNumero}?text=${mensagem}`;
+        
+        // Abrir nova janela ou guia com o link
+        window.open(urlWhatsApp, '_blank');
+        
+        // Opcional: feedback para o usuário
+        alert("✅ Redirecionando para o WhatsApp! Sua solicitação será enviada para nossa equipe. Em breve retornamos.");
+        
+        // Limpar formulário (opcional)
+        // form.reset(); // se quiser resetar, descomente, mas pode ser melhor manter
+    });
+
+    // pequeno ajuste para garantir que ao clicar nos links de contato social (placeholder) não tenha erro
+    const socialLinks = document.querySelectorAll('.social-links a');
+    socialLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if(link.getAttribute('href') === '#') {
+                e.preventDefault();
+                alert("Nossas redes sociais estão em breve! Enquanto isso, fale conosco pelo WhatsApp.");
+            }
+        });
+    });
+
+    // Suavizar navegação para links internos (opcional)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === "#" || targetId === "") return;
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Fechar menu mobile se aberto
+                if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>
